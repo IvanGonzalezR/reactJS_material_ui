@@ -7,6 +7,9 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 
 const LocationInformation = (props) => {
+  const generalStackStyles = {
+    marginTop: '2rem',
+  }
   const { userState } = props;
   const {
     location,
@@ -16,20 +19,30 @@ const LocationInformation = (props) => {
   } = userState;
 
   return (
-    <Grid container spacing={4}>
+    <Grid container >
       <Grid item xs={6}>
-        <Stack>
-          <Stack direction="row" spacing={1}>
-            <GitHubIcon fontSize='small' />
+        <Stack spacing={2} sx={generalStackStyles}>
+          <Stack direction="row" spacing={2}>
+            <GitHubIcon fontSize='medium' />
             <Typography noWrap={true}>
-              <Link href={`${html_url}`}>{html_url}</Link>
+              <Link
+                href={`${html_url}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                underline='hover'
+              >{html_url}</Link>
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={1}>
-            <WebIcon fontSize='small' />
+          <Stack direction="row" spacing={2}>
+            <WebIcon fontSize='medium' />
             <Typography>
               {blog ?
-                <Link href={`${blog}`}>{blog}</Link> :
+                <Link
+                  href={`${blog}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  underline='hover'
+                >{blog}</Link> :
                 'Not Available'
               }
             </Typography>
@@ -37,16 +50,16 @@ const LocationInformation = (props) => {
         </Stack>
       </Grid>
       <Grid item xs={6}>
-        <Stack>
-          <Stack direction="row" spacing={1}>
-            <LocationOnIcon fontSize='small' />
+        <Stack spacing={2} sx={generalStackStyles}>
+          <Stack direction="row" spacing={2}>
+            <LocationOnIcon fontSize='medium' />
             <Typography >
               {location ?
                 location : 'Not Available'}
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={1}>
-            <ApartmentIcon fontSize='small' />
+          <Stack direction="row" spacing={2}>
+            <ApartmentIcon fontSize='medium' />
             <Typography>
               {company ?
                 company : 'Not Available'}

@@ -11,10 +11,12 @@ const Description = (props) => {
   return (
     <>
       <Stack>
-        <Typography>{bio}</Typography>
+        <Typography variant='body1' sx={{ marginTop: 1 }}>{bio}</Typography>
       </Stack>
-      <PaperInformation userState={userState} />
-      <LocationInformation userState={userState} />
+      <Stack sx={{ marginTop: '1rem !important' }}>
+        <PaperInformation userState={userState} />
+        <LocationInformation userState={userState} />
+      </Stack>
     </>
   );
 };

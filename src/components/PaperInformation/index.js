@@ -3,6 +3,9 @@ import { Stack } from '@mui/system';
 import React from 'react'
 
 const PaperInformation = (props) => {
+  const paperStyles = {
+    background: '#FDFDFD',
+  }
   const { userState } = props;
   const {
     public_repos,
@@ -11,7 +14,7 @@ const PaperInformation = (props) => {
   } = userState;
 
   return (
-    <Paper elevation={2}>
+    <Paper elevation={3} sx={paperStyles}>
       <Stack
         direction="row"
         spacing={3}
@@ -19,15 +22,15 @@ const PaperInformation = (props) => {
         sx={{ padding: '1rem' }}
       >
         <Stack alignItems="center">
-          <Typography>
-            Repositórios:
+          <Typography variant='h6'>
+            Repositories:
           </Typography>
           <Typography sx={{ color: 'green' }}>
             {public_repos}
           </Typography>
         </Stack>
         <Stack alignItems="center">
-          <Typography>
+          <Typography variant='h6'>
             Followers:
           </Typography>
           <Typography sx={{ color: 'green' }}>
@@ -35,7 +38,7 @@ const PaperInformation = (props) => {
           </Typography>
         </Stack>
         <Stack alignItems="center">
-          <Typography>
+          <Typography variant='h6'>
             Following:
           </Typography>
           <Typography sx={{ color: 'green' }}>

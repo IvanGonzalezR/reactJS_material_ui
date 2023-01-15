@@ -1,10 +1,19 @@
 import React from "react";
-import { TextField, IconButton } from "@mui/material";
+import { TextField, IconButton, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import SearchIcon from '@mui/icons-material/Search';
 
-const Searcher = ({ setInputUser }) => {
-
+const Searcher = (props) => {
+  const userNotFoundStyles = {
+    color: '#f8312f',
+    fontSize: '1rem',
+    width: '7rem',
+    textAlign: 'center',
+  }
+  const {
+    setInputUser,
+    notFound,
+  } = props;
   const [ valueInput, setValueInput ] = React.useState('');
 
   const stackStyles = {
@@ -14,8 +23,8 @@ const Searcher = ({ setInputUser }) => {
     height: "40px"
   };
   const textFieldStyles = {
-    height: "1rem",
     width: "100%",
+    background: "#f8f8f8",
   };
 
   const handleSubmit = () => {
@@ -37,6 +46,7 @@ const Searcher = ({ setInputUser }) => {
     <Stack sx={stackStyles} direction='row'>
       <TextField
         sx={textFieldStyles}
+        variant="outlined"
         value={valueInput}
         label="GitHub user"
         placeholder="IvanGonzalezR"
@@ -45,13 +55,18 @@ const Searcher = ({ setInputUser }) => {
         onChange={onSearchValueChange}
         InputProps={{
           endAdornment: (
-            <IconButton
-              size='small'
-              onClick={handleSubmit}
-            >
-              <SearchIcon />
-            </IconButton>
-          )
+            <Stack direction='row' spacing={1} alignItems='center'>
+              {notFound ? (
+                <Typography sx={userNotFoundStyles}>User not found</Typography>
+              ) : null}
+              <IconButton
+                size='small'
+                onClick={handleSubmit}
+              >
+                <SearchIcon />
+              </IconButton>
+            </Stack>
+          ),
         }}
       />
     </Stack>

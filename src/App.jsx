@@ -10,17 +10,21 @@ function App() {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
-    height: "95vh",
-    width: "95vw",
+    height: "100vh",
+    width: "100vw",
+    background: "#F8F8F8",
+    fontFamily: 'Poppins',
   };
   const container2Styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    background: "whitesmoke",
+    background: "#E9E9E9",
     width: "80vw",
     height: "70vh",
     borderRadius: '16px',
+    fontFamily: 'Poppins',
+    boxShadow: '16px 18px 28px -4px rgba(150, 150, 150, 0.24), 0px 15px 25px -4px rgba(150, 150, 150, 0.24)',
   };
 
   const [ inputUser, setInputUser ] = React.useState('IvanGonzalezR');
@@ -36,13 +40,13 @@ function App() {
 
     if (userResponse.message === 'Not Found') {
       const { IvanGonzalezR } = localStorage;
-      setInputUser(IvanGonzalezR);
+      setUserState(JSON.parse(IvanGonzalezR));
       setNotFound(true);
     } else {
       setUserState(userResponse);
+      setNotFound(false);
     }
 
-    // setUserState(userResponse);
   }
 
   console.log(userState);
@@ -52,9 +56,9 @@ function App() {
   }, [ inputUser ]);
 
   return (
-    <Container sx={container1Styles}>
+    <Container sx={container1Styles} >
       <Container sx={container2Styles}>
-        <Searcher setInputUser={setInputUser} />
+        <Searcher setInputUser={setInputUser} notFound={notFound} />
         <UserCard userState={userState} />
       </Container>
     </Container>

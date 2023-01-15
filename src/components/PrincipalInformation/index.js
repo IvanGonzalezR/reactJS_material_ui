@@ -1,6 +1,6 @@
 import { Typography, Stack } from "@mui/material";
 // import { Stack } from "@mui/system";
-import React from "react";
+import React, { Fragment } from "react";
 
 const PrincipalInformation = (props) => {
   const { userState } = props;
@@ -12,11 +12,11 @@ const PrincipalInformation = (props) => {
 
   return (
     <>
-      <Stack>
-        <Typography>{name}</Typography>
-        <Typography>{created_at}</Typography>
+      <Stack direction='row' justifyContent='space-between'>
+        <Typography variant="h4">{name}</Typography>
+        <Typography variant="subtitle2">{created_at}</Typography>
       </Stack>
-      <Typography>@{login}</Typography>
+      <Typography variant="subtitle2" sx={{ marginTop: '0 !important' }}>@{login}</Typography>
     </>
   )
 }

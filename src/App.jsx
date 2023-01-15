@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { Searcher } from "./components/Searcher";
 import React from 'react'
 import { getGithubUser } from "./services/users";
+import { UserCard } from "./containers/UserCard";
 
 function App() {
 
@@ -23,13 +24,28 @@ function App() {
   };
 
   const [ inputUser, setInputUser ] = React.useState('IvanGonzalezR');
-  const [ userState, setUserState ] = React.useState('inputUser');
+  const [ userState, setUserState ] = React.useState(inputUser);
+  const [ notFound, setNotFound ] = React.useState(false);
 
   const gettingUser = async (user) => {
     const userResponse = await getGithubUser(user);
-    setUserState(userResponse);
-    console.log(userResponse);
+
+    if (userState === 'IvanGonzalezR') {
+      localStorage.setItem('IvanGonzalezR', JSON.stringify(userResponse));
+    };
+
+    if (userResponse.message === 'Not Found') {
+      const { IvanGonzalezR } = localStorage;
+      setInputUser(IvanGonzalezR);
+      setNotFound(true);
+    } else {
+      setUserState(userResponse);
+    }
+
+    // setUserState(userResponse);
   }
+
+  console.log(userState);
 
   React.useEffect(() => {
     gettingUser(inputUser);
@@ -39,6 +55,7 @@ function App() {
     <Container sx={container1Styles}>
       <Container sx={container2Styles}>
         <Searcher setInputUser={setInputUser} />
+        <UserCard userState={userState} />
       </Container>
     </Container>
   );

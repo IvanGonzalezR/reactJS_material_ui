@@ -1,5 +1,6 @@
 import React from "react";
-import { Stack, TextField, IconButton } from "@mui/material";
+import { TextField, IconButton } from "@mui/material";
+import { Stack } from "@mui/system";
 import SearchIcon from '@mui/icons-material/Search';
 
 const Searcher = ({ setInputUser }) => {
@@ -8,7 +9,9 @@ const Searcher = ({ setInputUser }) => {
 
   const stackStyles = {
     marginTop: "1.5rem",
+
     width: "80%",
+    height: "40px"
   };
   const textFieldStyles = {
     height: "1rem",

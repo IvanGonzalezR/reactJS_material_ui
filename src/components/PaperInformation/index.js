@@ -4,8 +4,23 @@ import React from 'react'
 
 const PaperInformation = (props) => {
   const paperStyles = {
+    display: 'flex',
     background: '#FDFDFD',
-  }
+    height: '5rem',
+    [ '@media (min-height: 768px)' ]: {
+      height: '100px',
+    },
+  };
+  const paperStackStyles = {
+    width: '100%',
+    height: '100%',
+    [ '@media (min-height: 768px)' ]: {
+      padding: 0,
+    },
+  };
+  const infoStackStyles = {
+    justifyContent: 'center',
+  };
   const { userState } = props;
   const {
     public_repos,
@@ -19,17 +34,17 @@ const PaperInformation = (props) => {
         direction="row"
         spacing={3}
         justifyContent="space-around"
-        sx={{ padding: '1rem' }}
+        sx={paperStackStyles}
       >
-        <Stack alignItems="center">
+        <Stack alignItems="center" sx={infoStackStyles}>
           <Typography variant='h6'>
             Repositories:
           </Typography>
           <Typography sx={{ color: 'green' }}>
             {public_repos}
           </Typography>
-        </Stack>
-        <Stack alignItems="center">
+        </Stack >
+        <Stack alignItems="center" sx={infoStackStyles}>
           <Typography variant='h6'>
             Followers:
           </Typography>
@@ -37,7 +52,7 @@ const PaperInformation = (props) => {
             {followers}
           </Typography>
         </Stack>
-        <Stack alignItems="center">
+        <Stack alignItems="center" sx={infoStackStyles}>
           <Typography variant='h6'>
             Following:
           </Typography>
@@ -46,7 +61,7 @@ const PaperInformation = (props) => {
           </Typography>
         </Stack>
       </Stack>
-    </Paper>
+    </Paper >
   )
 };
 

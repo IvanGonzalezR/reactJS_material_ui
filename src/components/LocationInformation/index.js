@@ -8,8 +8,18 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 
 const LocationInformation = (props) => {
   const generalStackStyles = {
-    marginTop: '2rem',
-  }
+    height: '6rem',
+    justifyContent: 'space-around',
+    marginTop: '2.5rem',
+    [ '@media (min-height: 768px)' ]: {
+
+    },
+  };
+  const itemStackStyles = {
+    [ '@media (min-height: 768px)' ]: {
+      // marginTop: '2.5rem',
+    },
+  };
   const { userState } = props;
   const {
     location,
@@ -21,8 +31,8 @@ const LocationInformation = (props) => {
   return (
     <Grid container >
       <Grid item xs={6}>
-        <Stack spacing={2} sx={generalStackStyles}>
-          <Stack direction="row" spacing={2}>
+        <Stack spacing={2} sx={generalStackStyles} >
+          <Stack direction="row" spacing={2} sx={itemStackStyles}>
             <GitHubIcon fontSize='medium' />
             <Typography noWrap={true}>
               <Link
@@ -33,7 +43,7 @@ const LocationInformation = (props) => {
               >{html_url}</Link>
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={2} sx={itemStackStyles}>
             <WebIcon fontSize='medium' />
             <Typography>
               {blog ?
@@ -51,14 +61,14 @@ const LocationInformation = (props) => {
       </Grid>
       <Grid item xs={6}>
         <Stack spacing={2} sx={generalStackStyles}>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={2} sx={itemStackStyles}>
             <LocationOnIcon fontSize='medium' />
             <Typography >
               {location ?
                 location : 'Not Available'}
             </Typography>
           </Stack>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={2} sx={itemStackStyles}>
             <ApartmentIcon fontSize='medium' />
             <Typography>
               {company ?

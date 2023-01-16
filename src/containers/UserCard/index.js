@@ -11,6 +11,12 @@ const UserCard = (props) => {
   const imageCardStyles = {
     borderRadius: '50%'
   };
+  const generalStackStyles = {
+    padding: 2,
+    [ '@media (min-height: 768px)' ]: {
+      height: '300px'
+    },
+  };
   const { userState } = props;
   const {
     avatar_url
@@ -31,11 +37,11 @@ const UserCard = (props) => {
           sx={imageCardStyles}
         />
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={9} >
         <Stack
           direction='column'
           spacing={1}
-          sx={{ padding: 2 }}
+          sx={generalStackStyles}
         >
           <PrincipalInformation userState={userState} />
           <Description userState={userState} />

@@ -25,6 +25,10 @@ function App() {
     borderRadius: '16px',
     fontFamily: 'Poppins',
     boxShadow: '16px 18px 28px -4px rgba(150, 150, 150, 0.24), 0px 15px 25px -4px rgba(150, 150, 150, 0.24)',
+    [ '@media (min-height: 830px)' ]: {
+      height: '60vh',
+      width: '80vw',
+    },
   };
 
   const [ inputUser, setInputUser ] = React.useState('IvanGonzalezR');
